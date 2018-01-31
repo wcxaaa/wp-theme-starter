@@ -2,12 +2,15 @@
 
 const gulp = require('gulp');
 const pump = require('pump');
+const runSequence = require('run-sequence');
 const del = require('del');
 const sass = require('gulp-sass');
-const cleanCSS = require('gulp-clean-css');
-const runSequence = require('run-sequence');
-const webpack = require('webpack-stream');
 const sourcemaps = require('gulp-sourcemaps');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const webpack = require('webpack-stream');
+
 const lr = require('tiny-lr');
 
 const devServer = lr();
@@ -41,13 +44,18 @@ gulp.task('clean', (cb) => {
 
 gulp.task('compile:css', () => {
 
+  let postCSSPlugins = [
+    autoprefixer({browsers: ['last 3 version']}),
+    cssnano()
+  ];
+
   pump(
     [
       gulp.src(`${assetsBase}/css/src/**/*.scss`),
       sourcemaps.init(),
       sass().on('error', sass.logError),
-      sourcemaps.write(`${assetsBase}/css/dist/`),
-      cleanCSS(),
+      postcss(postCSSPlugins),
+      sourcemaps.write(`.`),
       gulp.dest(`${assetsBase}/css/dist/`)
     ]
   );
@@ -63,6 +71,7 @@ gulp.task('compile:ts', () => {
       gulp.dest(`${assetsBase}/js/dist/`)
     ]
   );
+
 });
 
 gulp.task('watch', () => {
