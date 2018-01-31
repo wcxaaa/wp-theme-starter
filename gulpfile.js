@@ -76,7 +76,7 @@ gulp.task('watch', () => {
     gulp.watch('assets/css/src/**/*.scss', ['compile:css']);
 
     // Watch .js files
-    gulp.watch(['assets/js/src/**/*.ts', '!*.d.ts'], ['compile:ts']);
+    gulp.watch(['assets/js/src/**/*.ts', '!assets/js/src/**/*.d.ts'], ['compile:ts']);
 
   });
 
