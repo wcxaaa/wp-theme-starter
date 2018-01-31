@@ -1,0 +1,26 @@
+{
+  "name": "wp-theme-starter",
+  "version": "1.0.0",
+  "description": "Wordpress theme starter with gulp workflow integrating sass + typescript + tiny-rl",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "gulp serve",
+    "build": "gulp"
+  },
+  "author": "valorad",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.4.1",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "pump": "^2.0.1",
+    "run-sequence": "^2.2.1",
+    "tiny-lr": "^1.1.0",
+    "typescript": "^2.6.2",
+    "webpack-stream": "^4.0.0"
+  }
+}

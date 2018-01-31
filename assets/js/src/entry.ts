@@ -1,0 +1,1 @@
+console.log("gulp webpack typescript compilation successful");
